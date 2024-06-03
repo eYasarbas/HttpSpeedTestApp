@@ -3,16 +3,13 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-<div class="text-center">
     <h1 class="display-4">API Test</h1>
     <p>
         <button onclick="sendRequest('GetTest', 'GET')" class="btn btn-primary">GET Test</button>
         <button onclick="sendRequest('PostTest', 'POST')" class="btn btn-success">POST Test</button>
         <button onclick="sendRequest('PutTest', 'PUT')" class="btn btn-warning">PUT Test</button>
         <button onclick="sendRequest('PatchTest', 'PATCH')" class="btn btn-danger">PATCH Test</button>
+        <button onclick="sendRequest('GetCurrent', 'GET')" class="btn btn-info">GetCurrent </button>
     </p>
     <pre id="response"></pre>
 </div>
@@ -21,8 +18,9 @@
   
     <script>
         function sendRequest(action, method) {
+            var newUrl = "/Person/" + action;
             $.ajax({
-                url: `/Person/${action}`,
+                url: newUrl,
                 method: method,
                 success: function (response) {
                     $('#response').text(response);
